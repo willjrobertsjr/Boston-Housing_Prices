@@ -12083,7 +12083,7 @@ Standard deviation of prices: $165,171.13
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>The model has a coefficient of determination of 0.923.</p>
+<p>The model has a coefficient of determination of 0.923.  In other words, 92.3% of the variance in True Value is explained by the algorithm's predictions.  This coefficient value is considered very strong, so this model does successfully capture the variation of the target variable.</p>
 
 </div>
 </div>
@@ -14597,8 +14597,8 @@ SUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>When the model has large maximum depth (ex. 10), it seems to overfit to the data and have high variance.  The shaded region of the training score denoting uncertainty is smaller for large depths because the model is fitting each point more exactly considering their specific features.  However, these features and special cases may not appear in the testing set, causing this overfit model to less accurately predict the testing data (causing a lower validation score and larger shaded region of uncertainty).</p>
-<p>On the other hand, if a model has a small maximum depth (ex. 1), the model will suffer from high bias.  One feature is driving all the decisions in the tree.  The shaded region scenarios from above are inverse here, as training score at lower depths will have a larger uncertainty but validation at this depth will have less variance (compared to regions at high maximum depths).</p>
+<p>When the model has large maximum depth (ex. 10), it seems to overfit to the data and have high variance.  The training score is almost a perfect 1, while the validation score of the test set is around 0.7. This large difference in scores shows the model very much overfits to the training data and does not result in a reliable algorithm for other sets of housing data.</p>
+<p>On the other hand, if a model has a small maximum depth (ex. 1), the model will suffer from high bias.  One feature is driving all the decisions in the tree.  Because of this, both the training and validation scores are below 0.5.  This represents a model that does not accurately predict housing prices at level deemed acceptable.</p>
 
 </div>
 </div>
@@ -14711,7 +14711,7 @@ For the <code>fit_model</code> function in the code cell below, you will need to
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
@@ -14729,7 +14729,7 @@ For the <code>fit_model</code> function in the code cell below, you will need to
     <span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">()</span>
     
     <span class="c1">#Choose parameter range</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)}</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)}</span>
     
     <span class="c1">#Store validator in a variable</span>
     <span class="n">scoring_fnc</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">performance_metric</span><span class="p">)</span>
